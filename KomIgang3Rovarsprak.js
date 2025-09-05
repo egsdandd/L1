@@ -1,8 +1,14 @@
-// Importera readline-modulen för att kunna läsa inmatning från terminalen
-const readline = require('readline')
+/**
+ * @file Övning L1 i kurs 1DV610
+ * @version 1.0.0
+ * @author Dan-Håkan Davall, dd222mk@student.lnu.se
+ */
+
+// Importera readline-modulen för att kunna läsa och skriva till terminalen
+import { createInterface } from 'readline';
 
 // Skapa ett interface för att hantera in- och utmatning via terminalen
-const rl = readline.createInterface({
+const inOut = createInterface({
   input: process.stdin,   // standard inmatning (tangentbord)
   output: process.stdout  // standard utmatning (terminal)
 });
@@ -18,10 +24,23 @@ function rovarsprak(text) {
   );
 }
 
+// Funktion som gör första bokstaven i en sträng till stor bokstav
+function capitalizeFirstLetter(string) {
+  if (!string) return ""; // Hantera tom sträng
+  return string.charAt(0).toUpperCase() + string.slice(1); // Versal + resten oförändrad
+}
+
 // Ställ en fråga till användaren och ta emot svaret i variabeln 'namn'
-rl.question("Vad heter du? ", function(namn) {
-  // Skriv ut ett hälsningsmeddelande där namnet är översatt till rövarspråk
-  console.log("Hej " + rovarsprak(namn) + "!");
-  // Stäng ner readline-interfacet när vi är klara
-  rl.close();
+inOut.question("Vad heter du? ", function(namn) {
+  const namnMedVersal = capitalizeFirstLetter(namn);            // Gör första bokstaven stor
+  const rovarNamn = rovarsprak(namn);                           // Översätt till rövarspråk
+  const rovarNamnMedVersal = capitalizeFirstLetter(rovarNamn);  // Gör första bokstaven stor även i rövarspråksnamnet
+
+  // Skriv ut hälsningsmeddelanden med korrekt versal i början
+  console.log("Hej " + namnMedVersal + "! - på rövarspråk blir det:");
+  console.log("Hej " + rovarNamnMedVersal + "!");
+
+  // Stänger ner interface efter att allt är klart
+  inOut.close();
 });
+
