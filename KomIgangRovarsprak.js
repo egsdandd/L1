@@ -4,10 +4,10 @@
  * @author Dan-Håkan Davall, dd222mk@student.lnu.se
  */
 
-// Importera readline-modulen för att kunna läsa och skriva till terminalen
+// Importera readline-modulen från node.js för att kunna läsa och skriva till terminalen
 import { createInterface } from 'readline';
 
-// Skapa ett interface för att hantera in- och utmatning via terminalen
+// Skapa ett interface för att hantera in- och utmatning via terminalen enligt node.js standard. Interfacet sparas i variabeln 'inOut'
 const inOut = createInterface({
   input: process.stdin,   // standard inmatning (tangentbord)
   output: process.stdout  // standard utmatning (terminal)
@@ -17,7 +17,7 @@ const inOut = createInterface({
 function rovarsprak(text) {
   // Ersätter varje konsonant med konsonanten + 'o' + konsonanten igen
   return text.replace(
-    /[bcdfghjklmnpqrstvwxyz]/gi, // Hitta alla konsonanter (både stora och små)
+    /[bcdfghjklmnpqrstvwxyz]/gi, // Hitta alla konsonanter (både stora och små) med regex syntax
     function(x) {
       return x + 'o' + x.toLowerCase(); // Byt ut mot rövarspråksversionen
     }
