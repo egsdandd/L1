@@ -33,7 +33,7 @@ function capitalizeFirstLetter(string) {
 // Ställ en fråga till användaren och ta emot svaret i variabeln 'namn'
 inOut.question("Vad heter du? ", function(namn) {
   const namnMedVersal = capitalizeFirstLetter(namn);            // Gör första bokstaven stor
-  const rovarNamn = rovarsprak(namnMedVersal);                           // Översätt till rövarspråk
+  const rovarNamn = rovarsprak(namnMedVersal);                  // Översätt till rövarspråk
 
   // Skriv ut hälsningsmeddelanden med korrekt versal i början
   console.log("Hej " + namnMedVersal + "! - på rövarspråk blir det:");
